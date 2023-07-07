@@ -17,7 +17,7 @@ const ItemContainer = ({ imageSrc, title, location }) => {
       <View className='flex-row items-center space-x-1'>
         <FontAwesomeIcon name='map-marker' size={20} color='#8597A2' />
         <Text className='text-[#428288] text-[14px] font-bold'>
-          {location?.length > 18 ? `${title.slice(0, 18)}...` : location}{' '}
+          {location?.length > 18 ? `${location.slice(0, 18)}...` : location}{' '}
         </Text>
       </View>
     </TouchableOpacity>

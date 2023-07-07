@@ -27,10 +27,10 @@ const DiscoverScreen = () => {
   const [mainData, setMainData] = useState([])
 
   useEffect(() => {
-    fetchPlaces().then((data) => {
+    fetchPlaces().then((response) => {
       setIsLoading(true)
-      console.log(data, 'alpo')
-      setMainData(data)
+      setMainData(response.data)
+
       setInterval(() => {
         setIsLoading(false)
       }, 2000)
@@ -117,12 +117,20 @@ const DiscoverScreen = () => {
             <View className='flex-row justify-between px-4 items-center mt-8'>
               {mainData?.length > 0 ? (
                 <>
-                  <ItemContainer
+                  {/* <ItemContainer
                     key={'101'}
                     imageSrc='https://img.freepik.com/free-photo/a-cupcake-with-a-strawberry-on-top-and-a-strawberry-on-the-top_1340-35087.jpg'
-                    title='Something a long text'
+                    title={mainData[0].name}
                     location='Ufa'
-                  />
+                  /> */}
+                  {mainData.map((item) => (
+                    <ItemContainer
+                      key={item.id}
+                      imageSrc={item?.photo?.images?.medium?.url}
+                      title={item?.name}
+                      location={item?.location_string}
+                    />
+                  ))}
                 </>
               ) : (
                 <>
