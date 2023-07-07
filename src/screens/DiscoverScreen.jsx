@@ -1,18 +1,41 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   View,
   Text,
   SafeAreaView,
   Image,
   ScrollView,
-  TouchableOpacity
+  TouchableOpacity,
+  ActivityIndicator
 } from 'react-native'
-import { Attractions, Avatar, Hotels, Reastaurants } from '../utils/image'
+import {
+  Attractions,
+  Avatar,
+  Hotels,
+  NotFound,
+  Reastaurants
+} from '../utils/image'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
 import MenuContainer from '../components/MenuContainer'
+import FontistoIcon from 'react-native-vector-icons/Fontisto'
+import ItemContainer from '../components/ItemContainer'
+import { fetchPlaces } from '../utils/api'
 
 const DiscoverScreen = () => {
   const [type, setType] = useState('restaurants')
+  const [isLoading, setIsLoading] = useState(false)
+  const [mainData, setMainData] = useState([])
+
+  useEffect(() => {
+    fetchPlaces().then((data) => {
+      setIsLoading(true)
+      console.log(data, 'alpo')
+      setMainData(data)
+      setInterval(() => {
+        setIsLoading(false)
+      }, 2000)
+    })
+  }, [])
 
   return (
     <SafeAreaView className='bg-white flex-1 relative'>
@@ -48,41 +71,76 @@ const DiscoverScreen = () => {
       </View>
 
       {/* Menu container */}
-      <ScrollView>
-        <View className='flex-row items-center justify-between px-8 mt-8'>
-          <MenuContainer
-            key={'hotel'}
-            title='Hotels'
-            imageSrc={Hotels}
-            type={type}
-            setType={setType}
-          />
-          <MenuContainer
-            key={'attractions'}
-            title='Attractions'
-            imageSrc={Attractions}
-            type={type}
-            setType={setType}
-          />
-          <MenuContainer
-            key={'restaurants'}
-            title='Restaurants'
-            imageSrc={Reastaurants}
-            type={type}
-            setType={setType}
-          />
+      {isLoading ? (
+        <View className='flex-1 items-center justify-center'>
+          <ActivityIndicator size={'large'} color={'#0B646B'} />
         </View>
-
-        {/* Top Tips section */}
-        <View>
-          <View>
-            <Text>Top Tips</Text>
-            <TouchableOpacity>
-              <Text>Explore</Text>
-            </TouchableOpacity>
+      ) : (
+        <ScrollView>
+          <View className='flex-row items-center justify-between px-8 mt-8'>
+            <MenuContainer
+              key={'hotel'}
+              title='Hotels'
+              imageSrc={Hotels}
+              type={type}
+              setType={setType}
+            />
+            <MenuContainer
+              key={'attractions'}
+              title='Attractions'
+              imageSrc={Attractions}
+              type={type}
+              setType={setType}
+            />
+            <MenuContainer
+              key={'restaurants'}
+              title='Restaurants'
+              imageSrc={Reastaurants}
+              type={type}
+              setType={setType}
+            />
           </View>
-        </View>
-      </ScrollView>
+
+          {/* Top Tips section */}
+          <View>
+            <View className='flex-row justify-between items-center px-4 mt-8'>
+              <Text className='text-[#2C7379] text-[28px] font-bold'>
+                Top Tips
+              </Text>
+              <TouchableOpacity className='flex-row items-center justify-center space-x-2'>
+                <Text className='text-[#A0C4C7] text-[20px] font-bold'>
+                  Explore
+                </Text>
+                <FontistoIcon name='arrow-right-l' size={24} color='#A0C4C7' />
+              </TouchableOpacity>
+            </View>
+            <View className='flex-row justify-between px-4 items-center mt-8'>
+              {mainData?.length > 0 ? (
+                <>
+                  <ItemContainer
+                    key={'101'}
+                    imageSrc='https://img.freepik.com/free-photo/a-cupcake-with-a-strawberry-on-top-and-a-strawberry-on-the-top_1340-35087.jpg'
+                    title='Something a long text'
+                    location='Ufa'
+                  />
+                </>
+              ) : (
+                <>
+                  <View className='w-full h-[200px] items-center space-y-8 justify-center'>
+                    <Image
+                      source={NotFound}
+                      className='w-32 h-32 object-cover'
+                    />
+                    <Text className='text-2xl text-[#428288] font-semibold'>
+                      Ooops... No data found
+                    </Text>
+                  </View>
+                </>
+              )}
+            </View>
+          </View>
+        </ScrollView>
+      )}
     </SafeAreaView>
   )
 }
