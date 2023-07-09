@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
 
-const ItemContainer = ({ imageSrc, title, location }) => {
+const ItemContainer = ({ imageSrc, title, location, item }) => {
   return (
     <TouchableOpacity className='border border-gray-300 space-y-2 px-3 py-2 shadow-md bg-white w-[182px] my-2'>
       <Image
@@ -10,16 +10,22 @@ const ItemContainer = ({ imageSrc, title, location }) => {
         className='w-full h-40 rounded-md object-cover'
       />
 
-      <Text className='text-[#428288] text-[18px] font-bold'>
-        {title?.length > 14 ? `${title.slice(0, 14)}...` : title}{' '}
-      </Text>
+      {title ? (
+        <>
+          <Text className='text-[#428288] text-[18px] font-bold'>
+            {title?.length > 14 ? `${title.slice(0, 14)}...` : title}{' '}
+          </Text>
 
-      <View className='flex-row items-center space-x-1'>
-        <FontAwesomeIcon name='map-marker' size={20} color='#8597A2' />
-        <Text className='text-[#428288] text-[14px] font-bold'>
-          {location?.length > 18 ? `${location.slice(0, 18)}...` : location}{' '}
-        </Text>
-      </View>
+          <View className='flex-row items-center space-x-1'>
+            <FontAwesomeIcon name='map-marker' size={20} color='#8597A2' />
+            <Text className='text-[#428288] text-[14px] font-bold'>
+              {location?.length > 18 ? `${location.slice(0, 18)}...` : location}{' '}
+            </Text>
+          </View>
+        </>
+      ) : (
+        <></>
+      )}
     </TouchableOpacity>
   )
 }

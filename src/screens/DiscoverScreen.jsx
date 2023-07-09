@@ -31,7 +31,7 @@ const DiscoverScreen = () => {
       setIsLoading(true)
       setMainData(response.data)
 
-      setInterval(() => {
+      setTimeout(() => {
         setIsLoading(false)
       }, 2000)
     })
@@ -54,7 +54,7 @@ const DiscoverScreen = () => {
       </View>
 
       {/* Search input */}
-      <View className=' flex-row py-1 mx-4 px-4 items-center mt-3 bg-white shadow-lg rounded-xl'>
+      <View className=' flex-row py-1 mx-4 px-4 items-center mt-3 bg-white shadow-lg rounded-xl mb-5'>
         <GooglePlacesAutocomplete
           GooglePlacesDetailsQuery={{ fields: 'geometry' }}
           placeholder='Search'
@@ -77,7 +77,7 @@ const DiscoverScreen = () => {
         </View>
       ) : (
         <ScrollView>
-          <View className='flex-row items-center justify-between px-8 mt-8'>
+          <View className='flex-row items-center justify-between px-8'>
             <MenuContainer
               key={'hotel'}
               title='Hotels'
@@ -114,21 +114,24 @@ const DiscoverScreen = () => {
                 <FontistoIcon name='arrow-right-l' size={24} color='#A0C4C7' />
               </TouchableOpacity>
             </View>
-            <View className='flex-row justify-between px-4 items-center mt-8'>
+            <View className='flex-row flex-wrap justify-between px-4 items-center mt-8'>
               {mainData?.length > 0 ? (
                 <>
-                  {/* <ItemContainer
-                    key={'101'}
-                    imageSrc='https://img.freepik.com/free-photo/a-cupcake-with-a-strawberry-on-top-and-a-strawberry-on-the-top_1340-35087.jpg'
-                    title={mainData[0].name}
-                    location='Ufa'
-                  /> */}
-                  {mainData.map((item) => (
+                  {mainData.map((item, index) => (
                     <ItemContainer
-                      key={item.id}
-                      imageSrc={item?.photo?.images?.medium?.url}
-                      title={item?.name}
-                      location={item?.location_string}
+                      key={index}
+                      imageSrc={
+                        item?.photo?.images?.medium?.url
+                          ? item?.photo?.images?.medium?.url
+                          : 'https://img.freepik.com/free-photo/a-cupcake-with-a-strawberry-on-top-and-a-strawberry-on-the-top_1340-35087.jpg'
+                      }
+                      title={item?.name ? item?.name : 'Information not loaded'}
+                      location={
+                        item?.location_string
+                          ? item?.location_string
+                          : 'Information not loaded'
+                      }
+                      item={item}
                     />
                   ))}
                 </>
