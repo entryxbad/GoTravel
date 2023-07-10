@@ -158,6 +158,3 @@ const DiscoverScreen = ({ navigation }) => {
 }
 
 export default DiscoverScreen
-
-// AIzaSyDWpuVw2apN-XgX3gmrzsHrZgr1AG4sCxQ
-// AIzaSyC_FfUMp_OAwj1C7WA_Yy_UIIrijApkD4Q

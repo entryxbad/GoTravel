@@ -2,7 +2,7 @@
 
 This is a [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-> **Project used**: TailwindCSS and [Rapid API](https://rapidapi.com/apidojo/api/travel-advisor)
+> **Project used**: [NativeWind](https://www.nativewind.dev/quick-starts/react-native-cli) and [Rapid API](https://rapidapi.com/apidojo/api/travel-advisor)
 
 ## Start Application
 

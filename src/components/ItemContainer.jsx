@@ -2,9 +2,12 @@ import React from 'react'
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
 
-const ItemContainer = ({ imageSrc, title, location, item }) => {
+const ItemContainer = ({ imageSrc, title, location, item, navigation }) => {
   return (
-    <TouchableOpacity className='border border-gray-300 space-y-2 px-3 py-2 shadow-md bg-white w-[182px] my-2'>
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Item', { params: item })}
+      className='border border-gray-300 space-y-2 px-3 py-2 shadow-md bg-white w-[182px] my-2'
+    >
       <Image
         source={{ uri: imageSrc }}
         className='w-full h-40 rounded-md object-cover'
