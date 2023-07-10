@@ -23,19 +23,15 @@ import { fetchPlaces } from '../utils/api'
 
 const DiscoverScreen = ({ navigation }) => {
   const [type, setType] = useState('restaurants')
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   const [mainData, setMainData] = useState([])
 
   useEffect(() => {
-    fetchPlaces().then((response) => {
-      setIsLoading(true)
+    fetchPlaces(type).then((response) => {
+      setIsLoading(false)
       setMainData(response.data)
-
-      setTimeout(() => {
-        setIsLoading(false)
-      }, 2000)
     })
-  }, [])
+  }, [type])
 
   return (
     <SafeAreaView className='bg-white flex-1 relative'>
@@ -79,7 +75,7 @@ const DiscoverScreen = ({ navigation }) => {
         <ScrollView>
           <View className='flex-row items-center justify-between px-8'>
             <MenuContainer
-              key={'hotel'}
+              key={'hotels'}
               title='Hotels'
               imageSrc={Hotels}
               type={type}

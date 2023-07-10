@@ -7,15 +7,8 @@ import {
   TouchableOpacity
 } from 'react-native'
 import React from 'react'
-import ChevronLeftIcon from 'react-native-vector-icons/FontAwesome'
-import HeartBeatIcon from 'react-native-vector-icons/FontAwesome'
-import FontAwesomeMapMarker from 'react-native-vector-icons/FontAwesome'
-import FontAwesomeStar from 'react-native-vector-icons/FontAwesome'
-import FontAwesomeMapSigns from 'react-native-vector-icons/FontAwesome'
-import FontAwesomePhone from 'react-native-vector-icons/FontAwesome'
-import FontAwesomeEnvelope from 'react-native-vector-icons/FontAwesome'
-import FontAwesomeMapPin from 'react-native-vector-icons/FontAwesome'
-import MaterialIconsMoney from 'react-native-vector-icons/MaterialIcons'
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
 const ItemScreen = ({ route, navigation }) => {
   const data = route?.params
@@ -39,13 +32,10 @@ const ItemScreen = ({ route, navigation }) => {
               onPress={() => navigation.navigate('Discover')}
               className='w-10 h-10 rounded-md items-center justify-center bg-white'
             >
-              <ChevronLeftIcon name='chevron-left' size={24} color='#06B2BE' />
+              <FontAwesomeIcon name='chevron-left' size={24} color='#06B2BE' />
             </TouchableOpacity>
-            <TouchableOpacity
-              onPress={() => console.log(data?.params.bearing)}
-              className='w-10 h-10 rounded-md items-center justify-center bg-[#06B2BE]'
-            >
-              <HeartBeatIcon name='heartbeat' size={24} color='#fff' />
+            <TouchableOpacity className='w-10 h-10 rounded-md items-center justify-center bg-[#06B2BE]'>
+              <FontAwesomeIcon name='heartbeat' size={24} color='#fff' />
             </TouchableOpacity>
           </View>
 
@@ -72,7 +62,7 @@ const ItemScreen = ({ route, navigation }) => {
             {data?.params.name}
           </Text>
           <View className='flex-row items-center space-x-2 mt-2'>
-            <FontAwesomeMapMarker name='map-marker' size={25} color='#8597A2' />
+            <FontAwesomeIcon name='map-marker' size={25} color='#8597A2' />
             <Text className='text-[#8C9EA6] text-[20px] font-bold'>
               {data?.params.location_string}
             </Text>
@@ -85,7 +75,7 @@ const ItemScreen = ({ route, navigation }) => {
           {data?.params.rating && (
             <View className='flex-row items-center space-x-2'>
               <View className='w-12 h-12 bg-red-100 rounded-2xl items-center justify-center'>
-                <FontAwesomeStar name='star' size={24} color='#D58574' />
+                <FontAwesomeIcon name='star' size={24} color='#D58574' />
               </View>
               <View>
                 <Text className='text-[#515151]'>{data?.params.rating}</Text>
@@ -97,11 +87,7 @@ const ItemScreen = ({ route, navigation }) => {
           {data?.params.price_level && (
             <View className='flex-row items-center space-x-2'>
               <View className='w-12 h-12 bg-red-100 rounded-2xl items-center justify-center'>
-                <MaterialIconsMoney
-                  name='attach-money'
-                  size={24}
-                  color='#D58574'
-                />
+                <MaterialIcons name='attach-money' size={24} color='#D58574' />
               </View>
               <View>
                 <Text className='text-[#515151]'>
@@ -115,11 +101,7 @@ const ItemScreen = ({ route, navigation }) => {
           {data?.params.bearing && (
             <View className='flex-row items-center space-x-2'>
               <View className='w-12 h-12 bg-red-100 rounded-2xl items-center justify-center'>
-                <FontAwesomeMapSigns
-                  name='map-signs'
-                  size={24}
-                  color='#D58574'
-                />
+                <FontAwesomeIcon name='map-signs' size={24} color='#D58574' />
               </View>
               <View>
                 <Text className='text-[#515151]'>{data?.params.bearing}</Text>
@@ -154,19 +136,19 @@ const ItemScreen = ({ route, navigation }) => {
         <View className='space-y-2 mt-4 bg-gray-100 rounded-2xl px-4 py-2 mb-12'>
           {data?.params.phone && (
             <View className='items-center flex-row space-x-6'>
-              <FontAwesomePhone name='phone' size={24} color='#428288' />
+              <FontAwesomeIcon name='phone' size={24} color='#428288' />
               <Text className='text-lg'>{data?.params.phone}</Text>
             </View>
           )}
           {data?.params.email && (
             <View className='items-center flex-row space-x-6'>
-              <FontAwesomePhone name='envelope' size={24} color='#428288' />
+              <FontAwesomeIcon name='envelope' size={24} color='#428288' />
               <Text className='text-lg'>{data?.params.email}</Text>
             </View>
           )}
           {data?.params.address && (
             <View className='items-center flex-row space-x-6'>
-              <FontAwesomePhone name='map-pin' size={24} color='#428288' />
+              <FontAwesomeIcon name='map-pin' size={24} color='#428288' />
               <Text className='text-lg'>{data?.params.address}</Text>
             </View>
           )}
