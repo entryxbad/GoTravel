@@ -1,11 +1,13 @@
-import { View, Text } from 'react-native'
+import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react'
 
-const ItemScreen = () => {
+const ItemScreen = ({ route }) => {
+  const data = route?.params
+
   return (
-    <View>
+    <SafeAreaView>
       <Text>ItemScreen</Text>
-    </View>
+    </SafeAreaView>
   )
 }
 

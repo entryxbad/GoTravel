@@ -21,7 +21,7 @@ import FontistoIcon from 'react-native-vector-icons/Fontisto'
 import ItemContainer from '../components/ItemContainer'
 import { fetchPlaces } from '../utils/api'
 
-const DiscoverScreen = () => {
+const DiscoverScreen = ({ navigation }) => {
   const [type, setType] = useState('restaurants')
   const [isLoading, setIsLoading] = useState(false)
   const [mainData, setMainData] = useState([])
@@ -125,13 +125,14 @@ const DiscoverScreen = () => {
                           ? item?.photo?.images?.medium?.url
                           : 'https://img.freepik.com/free-photo/a-cupcake-with-a-strawberry-on-top-and-a-strawberry-on-the-top_1340-35087.jpg'
                       }
-                      title={item?.name ? item?.name : 'Information not loaded'}
+                      title={item?.name ? item?.name : 'Data not loaded'}
                       location={
                         item?.location_string
                           ? item?.location_string
-                          : 'Information not loaded'
+                          : 'Data not loaded'
                       }
                       item={item}
+                      navigation={navigation}
                     />
                   ))}
                 </>
