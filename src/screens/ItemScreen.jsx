@@ -9,6 +9,7 @@ import {
 import React from 'react'
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import StyleSheet from 'react-native-media-query'
 
 const ItemScreen = ({ route, navigation }) => {
   const data = route?.params
@@ -41,10 +42,13 @@ const ItemScreen = ({ route, navigation }) => {
 
           <View className='absolute flex-row inset-x-0 bottom-5 justify-between px-6'>
             <View className='flex-row space-x-2 items-center'>
-              <Text className='text-[12px] font-bold text-gray-100'>
+              <Text className='text-xs font-bold text-gray-100'>
                 {data?.params?.price_level}
               </Text>
-              <Text className='text-[32px] font-bold text-gray-100'>
+              <Text
+                className='text-3xl font-bold text-gray-100'
+                style={styles.price}
+              >
                 {data?.params?.price}
               </Text>
             </View>
@@ -58,12 +62,12 @@ const ItemScreen = ({ route, navigation }) => {
         {/* Title section */}
 
         <View className='mt-6'>
-          <Text className='text-[#428288] text-[24px] font-bold'>
+          <Text className='text-[#428288] text-2xl font-bold'>
             {data?.params.name}
           </Text>
           <View className='flex-row items-center space-x-2 mt-2'>
             <FontAwesomeIcon name='map-marker' size={25} color='#8597A2' />
-            <Text className='text-[#8C9EA6] text-[20px] font-bold'>
+            <Text className='text-[#8C9EA6] text-xl font-bold'>
               {data?.params.location_string}
             </Text>
           </View>
@@ -74,38 +78,62 @@ const ItemScreen = ({ route, navigation }) => {
         <View className='mt-4 flex-row items-center justify-between'>
           {data?.params.rating && (
             <View className='flex-row items-center space-x-2'>
-              <View className='w-12 h-12 bg-red-100 rounded-2xl items-center justify-center'>
+              <View
+                className='w-12 h-12 bg-red-100 rounded-2xl items-center justify-center'
+                style={styles.descriptionRow}
+              >
                 <FontAwesomeIcon name='star' size={24} color='#D58574' />
               </View>
               <View>
                 <Text className='text-[#515151]'>{data?.params.rating}</Text>
-                <Text className='text-[#515151]'>Ratings</Text>
+                <Text
+                  className='text-[#515151]'
+                  style={styles.descriptionRowFont}
+                >
+                  Ratings
+                </Text>
               </View>
             </View>
           )}
 
           {data?.params.price_level && (
             <View className='flex-row items-center space-x-2'>
-              <View className='w-12 h-12 bg-red-100 rounded-2xl items-center justify-center'>
+              <View
+                className='w-12 h-12 bg-red-100 rounded-2xl items-center justify-center'
+                style={styles.descriptionRow}
+              >
                 <MaterialIcons name='attach-money' size={24} color='#D58574' />
               </View>
               <View>
                 <Text className='text-[#515151]'>
                   {data?.params.price_level}
                 </Text>
-                <Text className='text-[#515151]'>Price Level</Text>
+                <Text
+                  className='text-[#515151]'
+                  style={styles.descriptionRowFont}
+                >
+                  Price Level
+                </Text>
               </View>
             </View>
           )}
 
           {data?.params.bearing && (
             <View className='flex-row items-center space-x-2'>
-              <View className='w-12 h-12 bg-red-100 rounded-2xl items-center justify-center'>
+              <View
+                className='w-12 h-12 bg-red-100 rounded-2xl items-center justify-center'
+                style={styles.descriptionRow}
+              >
                 <FontAwesomeIcon name='map-signs' size={24} color='#D58574' />
               </View>
               <View>
                 <Text className='text-[#515151]'>{data?.params.bearing}</Text>
-                <Text className='text-[#515151]'>Bearing</Text>
+                <Text
+                  className='text-[#515151]'
+                  style={styles.descriptionRowFont}
+                >
+                  Bearing
+                </Text>
               </View>
             </View>
           )}
@@ -113,7 +141,10 @@ const ItemScreen = ({ route, navigation }) => {
 
         {/* Description section */}
         {data?.params.description && (
-          <Text className='mt-4 tracking-wide text-[16px] font-semibold text-[#97A6AF]'>
+          <Text
+            className='mt-4 tracking-wide text-base font-semibold text-[#97A6AF]'
+            style={styles.description}
+          >
             {data?.params.description}
           </Text>
         )}
@@ -125,7 +156,7 @@ const ItemScreen = ({ route, navigation }) => {
                 key={item.key}
                 className='px-2 py-1 rounded-md bg-emerald-100'
               >
-                <Text>{item.name}</Text>
+                <Text className='text-sm'>{item.name}</Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -137,19 +168,25 @@ const ItemScreen = ({ route, navigation }) => {
           {data?.params.phone && (
             <View className='items-center flex-row space-x-6'>
               <FontAwesomeIcon name='phone' size={24} color='#428288' />
-              <Text className='text-lg'>{data?.params.phone}</Text>
+              <Text className='text-lg' style={styles.contact}>
+                {data?.params.phone}
+              </Text>
             </View>
           )}
           {data?.params.email && (
             <View className='items-center flex-row space-x-6'>
               <FontAwesomeIcon name='envelope' size={24} color='#428288' />
-              <Text className='text-lg'>{data?.params.email}</Text>
+              <Text className='text-lg' style={styles.contact}>
+                {data?.params.email}
+              </Text>
             </View>
           )}
           {data?.params.address && (
             <View className='items-center flex-row space-x-6'>
               <FontAwesomeIcon name='map-pin' size={24} color='#428288' />
-              <Text className='text-lg'>{data?.params.address}</Text>
+              <Text className='text-lg' style={styles.contact}>
+                {data?.params.address}
+              </Text>
             </View>
           )}
 
@@ -167,3 +204,30 @@ const ItemScreen = ({ route, navigation }) => {
 }
 
 export default ItemScreen
+
+const { styles } = StyleSheet.create({
+  price: {
+    '@media (max-width: 720px)': {
+      fontSize: 25
+    }
+  },
+  descriptionRow: {
+    width: 40,
+    height: 40
+  },
+  descriptionRowFont: {
+    '@media (max-width: 720px)': {
+      fontSize: 12
+    }
+  },
+  description: {
+    '@media (max-width: 720px)': {
+      fontSize: 15
+    }
+  },
+  contact: {
+    '@media (max-width: 720px)': {
+      fontSize: 15
+    }
+  }
+})

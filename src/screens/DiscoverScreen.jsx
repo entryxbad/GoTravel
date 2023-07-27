@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   View,
   Text,
@@ -20,6 +20,7 @@ import MenuContainer from '../components/MenuContainer'
 import FontistoIcon from 'react-native-vector-icons/Fontisto'
 import ItemContainer from '../components/ItemContainer'
 import { fetchPlaces } from '../utils/api'
+import StyleSheet from 'react-native-media-query'
 
 const DiscoverScreen = ({ navigation }) => {
   const [type, setType] = useState('restaurants')
@@ -37,9 +38,9 @@ const DiscoverScreen = ({ navigation }) => {
     <SafeAreaView className='bg-white flex-1 relative'>
       {/* Header section */}
       <View className='flex-row justify-between px-4 items-center'>
-        <View className=''>
-          <Text className='text-[40px] font-bold text-[#0B646B]'>Discover</Text>
-          <Text className='text-[36px] text-[#527273]'>the beauty today</Text>
+        <View>
+          <Text className='text-4xl font-bold text-[#0B646B]'>Discover</Text>
+          <Text className='text-4xl text-[#527273]'>the beauty today</Text>
         </View>
         <View className='w-12 h-12 bg-gray-400 rounded-md items-center justify-center shadow-lg'>
           <Image
@@ -50,7 +51,7 @@ const DiscoverScreen = ({ navigation }) => {
       </View>
 
       {/* Search input */}
-      <View className=' flex-row py-1 mx-4 px-4 items-center mt-3 bg-white shadow-lg rounded-xl mb-5'>
+      <View className='flex-row py-1 mx-4 px-4 items-center mt-3 bg-white shadow-lg rounded-xl mb-5'>
         <GooglePlacesAutocomplete
           GooglePlacesDetailsQuery={{ fields: 'geometry' }}
           placeholder='Search'
@@ -73,7 +74,10 @@ const DiscoverScreen = ({ navigation }) => {
         </View>
       ) : (
         <ScrollView>
-          <View className='flex-row items-center justify-between px-8'>
+          <View
+            className='flex-row items-center justify-between px-8'
+            style={styles.menuRow}
+          >
             <MenuContainer
               key={'hotels'}
               title='Hotels'
@@ -100,11 +104,11 @@ const DiscoverScreen = ({ navigation }) => {
           {/* Top Tips section */}
           <View>
             <View className='flex-row justify-between items-center px-4 mt-8'>
-              <Text className='text-[#2C7379] text-[28px] font-bold'>
+              <Text className='text-[#2C7379] text-3xl font-bold'>
                 Top Tips
               </Text>
               <TouchableOpacity className='flex-row items-center justify-center space-x-2'>
-                <Text className='text-[#A0C4C7] text-[20px] font-bold'>
+                <Text className='text-[#A0C4C7] text-xl font-bold'>
                   Explore
                 </Text>
                 <FontistoIcon name='arrow-right-l' size={24} color='#A0C4C7' />
@@ -154,3 +158,12 @@ const DiscoverScreen = ({ navigation }) => {
 }
 
 export default DiscoverScreen
+
+const { styles } = StyleSheet.create({
+  menuRow: {
+    '@media (max-width: 720px)': {
+      paddingLeft: 0,
+      paddingRight: 10
+    }
+  }
+})

@@ -1,4 +1,3 @@
-import React from 'react'
 import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import { HeroImage } from '../utils/image'
@@ -17,10 +16,8 @@ const HomeScreen = ({ navigation }) => {
 
       {/* Second section */}
       <View className='px-6 mt-8 space-y-3'>
-        <Text className='text-[#3C6072] text-[42px]'>Enjoy the trip with</Text>
-        <Text className='text-[#00BCC9] text-[38px] font-bold '>
-          Good moments
-        </Text>
+        <Text className='text-[#3C6072] text-4xl'>Enjoy the trip with</Text>
+        <Text className='text-[#00BCC9] text-4xl font-bold '>Good moments</Text>
         <Text className='text-[#3C6072] text-base'>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci,
           dolore!
@@ -28,7 +25,7 @@ const HomeScreen = ({ navigation }) => {
       </View>
 
       {/* Circle section */}
-      <View className='w-[350px] h-[350px] bg-[#00BCC9] rounded-full absolute bottom-5 -right-36'></View>
+      <View className='w-[340px] h-[350px] bg-[#00BCC9] rounded-full absolute bottom-5 -right-36 -z-10'></View>
       <View className='w-[350px] h-[350px] bg-[#E99265] rounded-full absolute -bottom-36 -left-28'></View>
 
       {/* Image container */}
@@ -52,7 +49,7 @@ const HomeScreen = ({ navigation }) => {
             iterationCount={'infinite'}
             className='w-20 h-20 items-center justify-center rounded-full bg-[#00BCC9]'
           >
-            <Text className='text-gray-50 text-[36px] font-semibold'>Go</Text>
+            <Text className='text-gray-50 text-4xl font-semibold'>Go</Text>
           </Animatable.View>
         </TouchableOpacity>
       </View>

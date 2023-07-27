@@ -1,5 +1,4 @@
 import { Image, Text, View, TouchableOpacity } from 'react-native'
-import React from 'react'
 
 const MenuContainer = ({ title, imageSrc, type, setType }) => {
   const handlePress = () => {
