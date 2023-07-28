@@ -39,7 +39,9 @@ const DiscoverScreen = ({ navigation }) => {
       {/* Header section */}
       <View className='flex-row justify-between px-4 items-center'>
         <View>
-          <Text className='text-4xl font-bold text-[#0B646B]'>Discover</Text>
+          <Text className='text-4xl font-bold text-[#0B646B] pt-5'>
+            Discover
+          </Text>
           <Text className='text-4xl text-[#527273]'>the beauty today</Text>
         </View>
         <View className='w-12 h-12 bg-gray-400 rounded-md items-center justify-center shadow-lg'>
