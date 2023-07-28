@@ -1,5 +1,6 @@
-import { SafeAreaView, View, Text, TouchableOpacity } from 'react-native'
+import { SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
+
 import { HeroImage } from '../utils/image'
 
 const HomeScreen = ({ navigation }) => {

@@ -1,6 +1,6 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
+import { Image, Text, TouchableOpacity, View } from 'react-native'
 import StyleSheet from 'react-native-media-query'
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
 
 const ItemContainer = ({ imageSrc, title, location, item, navigation }) => {
   return (

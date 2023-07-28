@@ -1,15 +1,15 @@
+import React from 'react'
 import {
-  View,
-  Text,
+  Image,
   SafeAreaView,
   ScrollView,
-  Image,
-  TouchableOpacity
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native'
-import React from 'react'
+import StyleSheet from 'react-native-media-query'
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import StyleSheet from 'react-native-media-query'
 
 const ItemScreen = ({ route, navigation }) => {
   const data = route?.params

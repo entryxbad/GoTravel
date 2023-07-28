@@ -1,13 +1,20 @@
 import { useEffect, useState } from 'react'
 import {
-  View,
-  Text,
-  SafeAreaView,
+  ActivityIndicator,
   Image,
+  SafeAreaView,
   ScrollView,
+  Text,
   TouchableOpacity,
-  ActivityIndicator
+  View
 } from 'react-native'
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
+import StyleSheet from 'react-native-media-query'
+import FontistoIcon from 'react-native-vector-icons/Fontisto'
+
+import ItemContainer from '../components/ItemContainer'
+import MenuContainer from '../components/MenuContainer'
+import { fetchPlaces } from '../utils/api'
 import {
   Attractions,
   Avatar,
@@ -15,12 +22,6 @@ import {
   NotFound,
   Reastaurants
 } from '../utils/image'
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete'
-import MenuContainer from '../components/MenuContainer'
-import FontistoIcon from 'react-native-vector-icons/Fontisto'
-import ItemContainer from '../components/ItemContainer'
-import { fetchPlaces } from '../utils/api'
-import StyleSheet from 'react-native-media-query'
 
 const DiscoverScreen = ({ navigation }) => {
   const [type, setType] = useState('restaurants')
